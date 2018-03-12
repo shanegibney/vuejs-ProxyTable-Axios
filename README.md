@@ -2,6 +2,41 @@
 
 > A Vue.js project
 
+This project tried to make use of axios to make a GET request to "http://localhost:8080/conn/api.php?action=read"
+
+```
+axios.get('/conn/api.php?action=read')
+```
+
+This proxies this api using the proxyTable in config/index.js which should see the /conn and target the proxy to http://localhost:8081/api.php?action=read
+
+```
+proxyTable: {
+  //    proxy all requests starting with / api to api.php
+  '/conn': {
+    target: 'http://localhost:8081/',
+    changeOrigin: true,
+    pathRewrite: {
+      '^/conn': ''
+    }
+  }
+},
+```
+
+The vue dev server runs on port 8080 with,
+
+```
+$ npm run dev
+```
+
+and a php server runs on port 8081 with,
+
+```
+$ php -S localhost:8081
+```
+
+But unfortunately it is not connecting to the mysql server running on port 3306, despite the fact that the connection is made if the vue dev server is not running and only the php server runs. Then json is returned if http://localhost:8081/api.php?action=read is navigated to in the browser
+
 ## Build Setup
 
 ``` bash
