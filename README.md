@@ -35,7 +35,9 @@ and a php server runs on port 8081 with,
 $ php -S localhost:8081
 ```
 
-But unfortunately it is not connecting to the mysql server running on port 3306, despite the fact that the connection is made if the vue dev server is not running and only the php server runs. Then json is returned if http://localhost:8081/api.php?action=read is navigated to in the browser
+But unfortunately it is not connecting to the mysql server running on port 3306, despite the fact that the connection is made if the vue dev server is not running and only the php server runs.
+
+Then json is returned if http://localhost:8081/api.php?action=read is navigated to in the browser. So the MySQL database is working, but not with vue.js.
 
 ## Build Setup
 
